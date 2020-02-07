@@ -6,11 +6,12 @@
   "scripts": {
     "dev": "nodemon src/server.js",
     "build": "sucrase ./src -d ./dist --transforms imports",
-    "pretest": "set NODE_ENV=test sequelize db:migrate",
-    "test": "set NODE_ENV=test && jest",
-    "posttest": "set NODE_ENV=test sequelize db:migrate:undo:all"
+    "pretest": "set NODE_ENV=test&& sequelize db:migrate",
+    "test": "set NODE_ENV=test&& jest --detectOpenHandles",
+    "posttest": "set NODE_ENV=test&& sequelize db:migrate:undo:all"
   },
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "dotenv": "^8.0.0",
     "express": "^4.17.1",
     "express-async-errors": "^3.1.1",
@@ -22,11 +23,14 @@
   "devDependencies": {
     "@sucrase/jest-plugin": "^2.0.0",
     "@types/jest": "^25.1.1",
+    "cross-env": "^7.0.0",
     "eslint": "^5.16.0",
     "eslint-config-airbnb-base": "^13.2.0",
     "eslint-config-prettier": "^6.0.0",
     "eslint-plugin-import": "^2.18.0",
     "eslint-plugin-prettier": "^3.1.0",
+    "factory-girl": "^5.0.4",
+    "faker": "^4.1.0",
     "jest": "^25.1.0",
     "nodemon": "^1.19.1",
     "prettier": "^1.18.2",
